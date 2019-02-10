@@ -1,3 +1,7 @@
+# Reason for Fork
+
+I want to run the container on my Raspberry Pi (Hypriot OS). The official android-sdk does not support the armhf architecture, so I use the maintainer's version. This is older but works quite fine for me.
+
 # Playmaker
 
 ![screenshot](https://github.com/NoMore201/playmaker/raw/master/example.png)
