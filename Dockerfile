@@ -30,11 +30,13 @@ RUN mkdir -p /data/fdroid/repo && \
 
 COPY README.md setup.py pm-server /opt/playmaker/
 COPY playmaker /opt/playmaker/playmaker
+RUN rm -rf /usr/bin/apksigner
+COPY apksigner /usr/bin/apksigner
 
 WORKDIR /opt/playmaker
 RUN pip3 install . && \
     cd /opt && rm -rf playmaker && \
-    sed -i 's/\"sdk_version\"/#\"sdk_version\"/g' /usr/local/lib/python3.7/site-packages/gpapi/config.py
+    sed -i 's/\"sdk_version\"/#\"sdk_version\"/g' /usr/local/lib/python3.8/site-packages/gpapi/config.py
 
 RUN groupadd -g 999 pmuser && \
     useradd -m -u 999 -g pmuser pmuser
