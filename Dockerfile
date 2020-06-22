@@ -19,7 +19,6 @@ RUN apt-get update && \
     virtualenv \
     wget \
     unzip \
-    fdroidserver \
     zlib1g-dev \
     android-sdk-platform-tools \
     android-sdk-build-tools && \
@@ -34,7 +33,9 @@ RUN rm -rf /usr/bin/apksigner
 COPY apksigner /usr/bin/apksigner
 
 WORKDIR /opt/playmaker
-RUN pip3 install . && \
+RUN pip3 install Cython && \
+	pip3 install fdroidserver && \
+    pip3 install . && \
     cd /opt && rm -rf playmaker && \
     sed -i 's/\"sdk_version\"/#\"sdk_version\"/g' /usr/local/lib/python3.8/site-packages/gpapi/config.py
 
